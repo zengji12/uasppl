@@ -67,7 +67,7 @@ jobs:
     - name: Install Python dependencies
       run: |
         pip install -r requirements.txt
-        pip install pytest pytest-xdist selenium
+        pip install pytest pytest-xdist selenium requests
 
     - name: Run Selenium Tests with Pytest in Parallel
       run: pytest -n auto tests/
