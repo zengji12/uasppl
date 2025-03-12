@@ -15,7 +15,6 @@ def test_logout(driver):
         EC.element_to_be_clickable((By.XPATH, "//button[contains(text(), \"OK I'm sign in\")]"))
     ).click()
 
-    driver.get(BASE_URL + "index.php")
     WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.LINK_TEXT, "Sign out"))).click()
     
     WebDriverWait(driver, 10).until(EC.url_contains("login.php"))
