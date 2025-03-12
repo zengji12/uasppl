@@ -15,7 +15,7 @@ def test_logout(driver):
         EC.element_to_be_clickable((By.XPATH, "//button[contains(text(), \"OK I'm sign in\")]"))
     ).click()
 
-    driver.get(BASE_URL + "index.php")
+    driver.get(BASE_URL + "menu.php")
 
     driver.find_element(By.CSS_SELECTOR, "a.btn.btn-danger").click()
 
