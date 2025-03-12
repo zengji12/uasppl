@@ -69,10 +69,22 @@ jobs:
         pip install -r requirements.txt
         pip install pytest pytest-xdist selenium
 
-    - name: Install ChromeDriver
+    - name: Install Google Chrome and ChromeDriver
       run: |
-        CHROME_VERSION=$(google-chrome --version | grep -oP '[0-9.]+' | head -1)
-        sudo apt install -y chromium-chromedriver
+        sudo apt-get update
+        sudo apt-get install -y wget curl unzip
+        sudo apt-get install -y google-chrome-stable || sudo apt-get install -y google-chrome
+
+        # Cek versi Chrome dan sesuaikan ChromeDriver-nya
+        CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+')
+        DRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION%%.*}")
+
+        wget -q -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${DRIVER_VERSION}/chromedriver_linux64.zip"
+        sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
+        sudo chmod +x /usr/local/bin/chromedriver
+
+        # Cek Chrome dan ChromeDriver sudah keinstall
+        google-chrome --version
         chromedriver --version
 
     - name: Run Selenium Tests with Pytest in Parallel
