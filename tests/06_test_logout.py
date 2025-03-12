@@ -15,5 +15,6 @@ def test_logout(driver):
         EC.element_to_be_clickable((By.XPATH, "//button[contains(text(), \"OK I'm sign in\")]"))
     ).click()
 
-    driver.find_element(By.LINK_TEXT, "Sign out").click()
+    driver.find_element(By.XPATH, "//a[contains(text(), 'Sign out')]").click()
+
     assert "login.php" in driver.current_url
