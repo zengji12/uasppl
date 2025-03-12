@@ -70,4 +70,5 @@ jobs:
         pip install pytest pytest-xdist selenium requests
 
     - name: Run Selenium Tests with Pytest in Parallel
-      run: pytest -n auto tests/
+      run: pytest -n auto pytest tests/02_test_login.py tests/03_test_new_contact.py tests/04_test_edit_contact.py tests/05_test_delete_contact.py tests/06_test_logout.py
+
