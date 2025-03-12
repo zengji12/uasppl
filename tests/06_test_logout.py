@@ -8,7 +8,7 @@ BASE_URL = "http://localhost:8000/"
 def test_logout(driver):
     driver.get(BASE_URL + "login.php")
     
-    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.NAME, "username"))).send_keys("admin")
+    driver.find_element(By.NAME, "username").send_keys("admin")
     driver.find_element(By.NAME, "password").send_keys("nimda666!")
 
     WebDriverWait(driver, 10).until(
