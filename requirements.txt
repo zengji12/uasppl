@@ -1,4 +1,4 @@
 selenium
 pytest
 pytest-xdist
-request
+requests
