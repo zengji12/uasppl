@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 BASE_URL = "http://localhost:8000/"
 
+@pytest.fixture(autouse=True)
 def test_login(driver):
     driver.get(BASE_URL + "login.php")
     
